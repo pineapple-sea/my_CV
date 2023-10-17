@@ -1,0 +1,61 @@
+.container {
+    height: 100vh;
+    padding: 60px 120px 0;
+
+    .header {
+        display: flex;
+        justify-content: center;
+    
+        h1 {
+            font-weight: 400;
+            font-size: 36px;
+            line-height: 1.25em;
+            margin: 30px 0;
+        }
+    
+        .highlight-container,
+        .highlight {
+            position: relative;
+        }
+    
+        .highlight-container {
+            display: inline-block;
+    
+            &:before {
+                content: " ";
+                display: block;
+                height: 90%;
+                width: 100%;
+                margin-left: -3px;
+                margin-right: -3px;
+                position: absolute;
+                background: #ffd500;
+                transform: rotate(2deg);
+                top: -1px;
+                left: -1px;
+                border-radius: 20% 25% 20% 24%;
+                padding: 10px 3px 3px 10px;
+            }
+        }
+    }
+
+    .content-wrapper {
+        display: flex;
+
+        .project {
+
+            p {
+                font-size: 24px;
+                line-height: 1.7;
+            }
+
+            .project-link {
+                text-decoration: none;
+                font-size: 22px;
+                background-color: #ffd500;
+                padding: 15px 30px;
+                border-radius: 10px;
+            }
+        }
+    }
+}

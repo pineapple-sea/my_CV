@@ -1,0 +1,60 @@
+.toolbar {
+    height: 64px;
+    position: fixed;
+    justify-content: space-between;
+    padding: 0 60px;
+    z-index: 1;
+
+    .logo-wrapper {
+        cursor: pointer;
+
+        a {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: auto;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 16px;
+            border-radius: 5px;
+            padding: 0 10px;
+
+            &:hover {
+                color: #ffd500;
+            }
+        }
+
+        .circle-img {
+            width: 50px;
+            height: 50px;
+            background-image: url('/assets/images/DSC00207.jpg');
+            border-radius: 50%;
+            background-size: contain;
+        }
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 30px;
+
+    }
+
+    .styled-link {
+        width: auto;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 16px;
+        border-radius: 5px;
+        padding: 0 10px;
+        transition: transform .2s;
+        cursor: pointer;
+
+        &:hover {
+            color: #ffd500;
+            transform: scale(1.5)
+        }
+    }
+
+}

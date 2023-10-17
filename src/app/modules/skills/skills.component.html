@@ -1,0 +1,35 @@
+<section class="container" id="skills">
+    <div class="header">
+        <h1>
+            <span class="highlight-container">
+                <span class="highlight">
+                    Skills
+                </span>
+            </span>
+        </h1>
+    </div>
+    <div class="content-wrapper">
+        <div class="skills-block">
+            <h1>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="developer_board"></mat-icon>
+                Hard Skills
+            </h1>
+            <div class="skills-list">
+                <p *ngFor="let skill of hardSkills" class="skill">
+                    {{skill}}
+                </p>
+            </div>
+        </div>
+        <div class="skills-block">
+            <h1>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="developer_board"></mat-icon>
+                Soft Skills
+            </h1>
+            <div class="skills-list">
+                <p *ngFor="let skill of softSkills" class="skill">
+                    {{skill}}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

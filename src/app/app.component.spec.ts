@@ -1,29 +1,57 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { TestScheduler } from 'rxjs/testing';
+import { ComponentServiceService } from './component-service.service';
+import { ChildComponentComponent } from './child/child-component/child-component.component';
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
-  }));
+  let fixture;
+  let app: AppComponent;
+  let componentServiceServiceMock: jasmine.SpyObj<ComponentServiceService>;
+
+  beforeEach(() => {
+    componentServiceServiceMock = jasmine.createSpyObj(
+      'ComponentServiceService',
+      ['testServiceMethod']
+    );
+
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
+      declarations: [AppComponent, ChildComponentComponent],
+      providers: [
+        {
+          provide: ComponentServiceService,
+          useValue: componentServiceServiceMock,
+        },
+      ],
+    });
+  });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
+  });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it(`should have as title 'angular16'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular16');
+    expect(app.title).toEqual({ name: 'angular16' });
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular16 app is running!');
+  describe('testServiseMethod', () => {
+    it('should testServiseMethod', () => {
+      const scheduler = new TestScheduler((actual, expected) => {
+        expect(actual).toEqual(expected);
+      });
+      scheduler.run((helpers) => {
+        componentServiceServiceMock.testServiceMethod.and.returnValue(
+          scheduler.createHotObservable('-abc', {a: 1, b: 2, c: 3})
+        );
+
+        helpers.expectObservable(app['testServiseMethod']()).toBe('--bc', {b: 4, c: 6});
+      });
+    });
   });
 });
