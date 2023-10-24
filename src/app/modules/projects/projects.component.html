@@ -9,10 +9,10 @@
         </h1>
     </div>
     <div class="content-wrapper">
-        <div class="project">
-            <h2>Aspiratio</h2>
-            <p>Social network for timemanagment and motivation</p>
-            <a href="https://aspiratio.pp.ua/" target="_blank" class="project-link">Project link</a>
+        <div class="project" *ngFor="let project of projects">
+            <h2 class="title">{{project.name}}</h2>
+            <p class="description">{{project.description}}</p>
+            <a *ngIf="project.link" [href]="project.link" target="_blank" class="project-link">Project link</a>
         </div>
     </div>
 </section>

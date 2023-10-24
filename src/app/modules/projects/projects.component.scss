@@ -1,10 +1,12 @@
 .container {
-    height: 100vh;
-    padding: 60px 120px 0;
+    max-width: 1580px;
+    margin: 0 auto;
+    padding: 60px 120px 120px;
 
     .header {
         display: flex;
         justify-content: center;
+        margin-bottom: 60px;
     
         h1 {
             font-weight: 400;
@@ -41,15 +43,26 @@
 
     .content-wrapper {
         display: flex;
+        justify-content: space-between;
 
         .project {
+            width: 540px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
 
-            p {
+            .title {
+                font-size: 28px;
+                font-weight: 500;
+            }
+
+            .description {
                 font-size: 24px;
                 line-height: 1.7;
             }
 
             .project-link {
+                max-width: 120px;
                 text-decoration: none;
                 font-size: 22px;
                 background-color: #ffd500;

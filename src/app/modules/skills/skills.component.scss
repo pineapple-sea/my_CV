@@ -1,10 +1,12 @@
 .container {
-    height: 100vh;
-    padding: 60px 120px 0;
+    max-width: 1580px;
+    margin: 0 auto;
+    padding: 60px 120px;
 
     .header {
         display: flex;
         justify-content: center;
+        margin-bottom: 60px;
     
         h1 {
             font-weight: 400;
